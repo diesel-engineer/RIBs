@@ -241,6 +241,8 @@ open class Router<InteractorType>: Routing {
 
         deinitDisposable.dispose()
 
+        #if DEBUG
         LeakDetector.instance.expectDeallocate(object: interactable)
+        #endif
     }
 }

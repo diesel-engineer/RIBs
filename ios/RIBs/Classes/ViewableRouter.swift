@@ -90,6 +90,8 @@ open class ViewableRouter<InteractorType, ViewControllerType>: Router<Interactor
     }
 
     deinit {
+        #if DEBUG
         LeakDetector.instance.expectDeallocate(object: viewControllable.uiviewController, inTime: LeakDefaultExpectationTime.viewDisappear)
+        #endif
     }
 }
